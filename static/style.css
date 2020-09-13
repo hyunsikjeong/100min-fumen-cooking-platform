@@ -33,8 +33,6 @@ img {
     display: inline-block;
     min-width: 500px;
     width: calc(30% - 10px);
-    min-height: 950px;
-    height: 100%;
     margin: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -42,7 +40,6 @@ img {
     font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
     background: #ffffff;
     text-align: left;
-    /* border: 1px solid black; */
 }
 
 .apply {
