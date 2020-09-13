@@ -38,8 +38,13 @@ img {
     padding-right: 20px;
     vertical-align: top;
     font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+    font-size: 16px;
     background: #ffffff;
     text-align: left;
+}
+
+.korean {
+    word-break: keep-all;
 }
 
 .apply {
