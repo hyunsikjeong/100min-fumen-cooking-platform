@@ -1,0 +1,59 @@
+body {
+    background: repeating-linear-gradient(
+        45deg,
+        #f8f8f8,
+        #f8f8f8 10px,
+        #ffffff 10px,
+        #ffffff 20px
+    );
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+.rule-wrapper {
+    padding: auto;
+    text-align: center;
+}
+
+.rule {
+    display: inline-block;
+    min-width: 500px;
+    width: calc(30% - 10px);
+    min-height: 950px;
+    height: 100%;
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: top;
+    font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+    background: #ffffff;
+    text-align: left;
+    /* border: 1px solid black; */
+}
+
+.apply {
+    margin: 30px;
+}
+
+.footer {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+}
