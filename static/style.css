@@ -23,11 +23,16 @@ body {
     left: 0;
 }
 
-.navigation a {
-    display: inline-block;
+.navigation .left {
+    display: flex;
+}
+
+.navigation .left div {
     margin: 0px;
     color: black;
+    cursor: pointer;
 
+    border: 0px;
     height: 50px;
     line-height: 50px; /* This one is what I didn't want :( */
     width: 100px;
@@ -37,16 +42,16 @@ body {
     font-size: 16px;
 }
 
-.navigation a:hover {
+.navigation .left div:hover {
     background-color: #808080;
 }
 
-.navigation a.active {
+.navigation .left div.active {
     background-color: #4CAF50;
     color: white;
 }
 
-.navigation img {
+.navigation .right img {
     margin: 10px 20px 10px auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
