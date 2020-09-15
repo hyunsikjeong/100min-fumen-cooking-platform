@@ -10,9 +10,55 @@
         <img src="static/phrase_korean.png">
         <img src="static/time.png">
     </div>
+    <div class="deadline">
+        <div class="title">
+            〆切まであと / Deadline ends in / 신청기한까지
+        </div>
+        <div class="timer">
+            <div class="slot">
+                <div class="name">Day</div>
+                <div class="time" id="day"></div>
+            </div>
+            <div class="slot">
+                <div class="name">Hour</div>
+                <div class="time" id="hour"></div>
+            </div>
+            <div class="slot">
+                <div class="name">Minute</div>
+                <div class="time" id="minute"></div>
+            </div>
+            <div class="slot">
+                <div class="name">Second</div>
+                <div class="time" id="second"></div>
+            </div>
+        </div>
+    </div>
     <div class="apply">
         <a href="https://forms.gle/X9LK1hpxWBWqqUUV7">
             <button class="button">申し込む / Apply / 신청하기</button>
         </a>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var deadline = new Date("{{ deadline }}").getTime();
+            var x = setInterval(function() { 
+                var now = new Date().getTime();
+                var t = (deadline > now) ? deadline - now : 0;
+                var day = Math.floor(t / (1000 * 60 * 60 * 24));
+                var hour = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minute = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+                var second = Math.floor((t % (1000 * 60)) / (1000));
+            
+                document.getElementById("day").innerHTML = day;
+                document.getElementById("hour").innerHTML = hour;
+                document.getElementById("minute").innerHTML = minute;
+                document.getElementById("second").innerHTML = second;
+
+                if (t === 0) { 
+                    clearInterval(x);
+                    location.reload(true);
+                } 
+            }, 1000);
+        });
+    </script>
 {% endblock %}

@@ -11,7 +11,8 @@ settings = json.load(open('settings.json', 'r'))
 
 @app.route('/')
 def main():
-    return render_template('main.html', css_param=css_param)
+    deadline = settings["application_deadline"]
+    return render_template('main.html', css_param=css_param, deadline=deadline)
 
 @app.route('/rule')
 def rule():
