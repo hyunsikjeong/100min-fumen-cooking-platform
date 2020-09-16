@@ -22,7 +22,7 @@ EMPTY_SONG_INFO = {
 
 @app.route('/')
 def main():
-    deadline_str = settings["application_deadline"] 
+    deadline_str = settings["application_deadline"]
     deadline = dateutil.parser.isoparse(deadline_str)
     now = datetime.now(deadline.tzinfo)
 

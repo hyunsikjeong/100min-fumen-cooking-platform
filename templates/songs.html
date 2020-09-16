@@ -34,7 +34,7 @@
                 <div class= "img">
                     <img src="{{ song_info['image'] }}">
                 </div><div class="data">
-                    <div class="info">    
+                    <div class="info">
                         <div class="genre">{{ song_info["genre"] }}</div>
                         <div class="name">{{ song_info["name"] }}</div>
                         <div class="artist">By {{ song_info["artist"] }}</div>
@@ -43,7 +43,7 @@
                         <div class="recommender">{{ song_info["recommender"] }}</div>
                         <a href="{{ song_info['dl'] }}">CLICK TO DOWNLOAD</a>
                     </div>
-                </div> 
+                </div>
             </div>
         {% endfor %}
     </div>
@@ -51,23 +51,23 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             var song_reveal = new Date("{{ song_reveal }}").getTime();
-            var x = setInterval(function() { 
+            var x = setInterval(function() {
                 var now = new Date().getTime();
                 var t = (song_reveal > now) ? song_reveal - now : 0;
                 var day = Math.floor(t / (1000 * 60 * 60 * 24));
                 var hour = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minute = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
                 var second = Math.floor((t % (1000 * 60)) / (1000));
-            
+
                 document.getElementById("day").innerHTML = day;
                 document.getElementById("hour").innerHTML = hour;
                 document.getElementById("minute").innerHTML = minute;
                 document.getElementById("second").innerHTML = second;
 
-                if (t === 0) { 
+                if (t === 0) {
                     clearInterval(x);
                     location.reload(true);
-                } 
+                }
             }, 1000);
         });
     </script>
