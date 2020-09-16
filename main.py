@@ -135,10 +135,11 @@ def am_pm_list():
     end = dateutil.parser.isoparse(end_str)
     now = datetime.now(start.tzinfo)
     token = request.args.get('token', '')
+    admin_token = settings['admin_token']
 
     # Handle uploaded files
     if request.method == 'POST':
-        uploadable = (token == settings['admin_token'] or start <= now < end)
+        uploadable = (token == admin_token or start <= now < end)
         if not uploadable:
             flash('Time is out')
             return redirect(request.url)
@@ -152,7 +153,7 @@ def am_pm_list():
             return redirect(request.url)
 
         user_token = request.form['token'].strip()
-        res = check_user_token(people, settings['admin_token'], user_token)
+        res = check_user_token(people, admin_token, user_token)
         if not res:
             flash('Wrong token value. Please check again.')
             return redirect(request.url)
@@ -170,7 +171,7 @@ def am_pm_list():
 
         return redirect(request.url)
 
-    if token == settings['admin_token']:
+    if token == admin_token:
         reveal_state = 3
         deadline = None
         songs = json.load(open('songs.json', 'r'))
@@ -191,7 +192,7 @@ def am_pm_list():
     if len(songs) < len(people):
         songs += songs * ((len(people) - 1) // len(songs))
 
-    random.seed(int(sha256(token.encode()).hexdigest(), 16))
+    random.seed(int(sha256(admin_token.encode()).hexdigest(), 16))
     random.shuffle(songs)
 
     data = get_db_data()
