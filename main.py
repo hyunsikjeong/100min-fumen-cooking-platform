@@ -119,15 +119,16 @@ def check_and_get_extension(filename):
 def am_pm_list():
     # Get people list
     rule = request.url_rule
+    total_people = len(people_list["am"]) + len(people_list["pm"])
     if 'am' in rule.rule:
         start_str = settings["am_start"]
         end_str = settings["am_end"]
-        people = people_list["am"]
+        people, people_offset = people_list["am"], 0
         nav_val = 4
     elif 'pm' in rule.rule:
         start_str = settings["pm_start"]
         end_str = settings["pm_end"]
-        people = people_list["pm"]
+        people, people_offset = people_list["pm"], len(people_list["am"])
         nav_val = 5
     else:
         return None
@@ -190,11 +191,13 @@ def am_pm_list():
         songs = json.load(open('songs.json', 'r'))
 
     # This loop is just for debugging in local
-    if len(songs) < len(people):
-        songs += songs * ((len(people) - 1) // len(songs))
+    if len(songs) < total_people:
+        songs += songs * ((total_people - 1) // len(songs))
 
     random.seed(int(sha256(admin_token.encode()).hexdigest(), 16))
     random.shuffle(songs)
+
+    songs = songs[people_offset:]
 
     data = get_db_data()
     db_dict = dict(map(lambda x: (x[0], (x[1], x[2])), data))
