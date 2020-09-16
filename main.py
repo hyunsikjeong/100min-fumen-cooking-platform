@@ -201,7 +201,6 @@ def am_pm_list():
 
     data = get_db_data()
     db_dict = dict(map(lambda x: (x[0], (x[1], x[2])), data))
-    print(db_dict)
     lis = []
     for i in range(len(people)):
         person, song = people[i], songs[i]
