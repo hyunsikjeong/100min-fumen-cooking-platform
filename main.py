@@ -179,11 +179,11 @@ def am_pm_list():
         songs = json.load(open('songs.json', 'r'))
     elif start <= now < end:
         reveal_state = 1
-        deadline = end
+        deadline = end_str
         songs = json.load(open('songs.json', 'r'))
     elif now < start:
         reveal_state = 0
-        deadline = start
+        deadline = start_str
         songs = [ EMPTY_SONG_INFO for _ in range(len(people)) ]
     else:
         reveal_state = 2
