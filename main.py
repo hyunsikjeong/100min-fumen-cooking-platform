@@ -13,6 +13,7 @@ import sqlite3
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './upload'
 app.secret_key = secrets.token_urlsafe(32)
+app.config['MAX_CONTENT_LENGTH'] = 128 * 1024
 
 css_param = format(random.getrandbits(64), '016x')
 settings = json.load(open('settings.json', 'r'))
@@ -108,7 +109,7 @@ def check_and_get_extension(filename):
     if '.' not in filename:
         return None
     extension = filename.rsplit('.', 1)[1].lower()
-    if extension in ['zip', 'rar', '7z', 'bms', 'bme', 'bml']:
+    if extension in ['zip', 'rar', '7z', 'bms', 'bme', 'bml', 'pms']:
         return extension
     return None
 
