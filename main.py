@@ -112,3 +112,7 @@ def am_pm_list():
         deadline=deadline,
         nav_val=nav_val
     )
+
+@app.route('/hidden')
+def hidden():
+    return render_template('hidden.html')

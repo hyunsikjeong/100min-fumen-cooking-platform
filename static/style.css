@@ -401,3 +401,12 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+
+.videoframe {
+    margin: auto;
+}
+
+.videoframe iframe {
+    margin: 0 auto;
+    display: block;
+}
