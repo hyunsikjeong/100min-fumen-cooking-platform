@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template, request, redirect, flash, g, send_from_directory
 from werkzeug.utils import secure_filename
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import dateutil.parser
 import random
 from hashlib import sha256
@@ -114,6 +114,17 @@ def check_and_get_extension(filename):
         return extension
     return None
 
+def timedelta_to_string(delta):
+    if delta < timedelta(0):
+        return '-' + timedelta_to_string(-delta)[1:]
+
+    seconds = delta.days * 3600 * 24 + delta.seconds
+    minutes = seconds // 60
+    seconds = seconds % 60
+    milliseconds = delta.microseconds // 1000
+
+    return '+{}m {:02d}.{:03d}s'.format(minutes, seconds, milliseconds)
+
 @app.route('/am', methods=['GET', 'POST'])
 @app.route('/pm', methods=['GET', 'POST'])
 def am_pm_list():
@@ -208,10 +219,8 @@ def am_pm_list():
         if person in db_dict:
             filename, timestamp = db_dict[person]
             last_time = dateutil.parser.isoparse(timestamp).replace(tzinfo=start.tzinfo)
-            last_time = str(last_time - start)
-            if '.' in last_time:
-                last_time = last_time.split('.')[0]
-            lis.append((person, song, last_time, filename))
+            time_diff = timedelta_to_string(last_time - start)
+            lis.append((person, song, time_diff, filename))
         else:
             lis.append((person, song, None, None ))
 
