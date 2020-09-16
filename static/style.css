@@ -1,3 +1,8 @@
+* {
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', sans-serif;
+    font-weight: 300;
+}
+
 body {
     background: repeating-linear-gradient(
         45deg,
@@ -6,7 +11,6 @@ body {
         #ffffff 10px,
         #ffffff 20px
     );
-    font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
 }
 
 .navigation-padding {
@@ -66,8 +70,8 @@ body {
 .deadline .title {
     margin: 0 0 10px 0;
     width: 800px;
-    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
     font-size: 30px;
+    font-weight: 400;
     text-align: center;
 }
 
@@ -112,7 +116,7 @@ a {
     transition-duration: 0.4s;
     padding: 10px;
     cursor: pointer;
-    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
+    font-family: 'Patua One', 'Black Han Sans', 'Spoqa Han Sans JP', sans-serif;
     font-size: 40px;
     background-color: #fc75fe;
     border: #8c06a0 solid 7px;
@@ -130,7 +134,7 @@ a {
     transition-duration: 0.4s;
     padding: 10px;
     cursor: pointer;
-    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
+    font-family: 'Patua One', 'Black Han Sans', 'Spoqa Han Sans JP', sans-serif;
     font-size: 40px;
     background-color: #757575;
     border: #333333 solid 7px;
@@ -210,8 +214,6 @@ a {
     height: 150px;
     margin: 30px auto 30px auto;
     display: flex;
-
-    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
 }
 
 .song .img {
@@ -273,6 +275,7 @@ a {
 
     height: 60px;
     font-size: 40px;
+    font-weight: 700;
 }
 
 .song .data .info .artist {
@@ -301,7 +304,8 @@ a {
 }
 
 .song .data .etc .recommender {
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 700;
     top: 25px;
 }
 
@@ -332,8 +336,8 @@ a {
 }
 
 .upload_form .title {
-    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
     font-size: 20px;
+    font-weight: 400;
     text-align: center;
 }
 
@@ -352,8 +356,6 @@ a {
     height: 150px;
     margin: 30px auto 30px auto;
     display: flex;
-
-    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
 }
 
 .person_song .song {
@@ -382,6 +384,7 @@ a {
     height: 60%;
     width: 100%;
     font-size: 30px;
+    font-weight: 700;
     text-align: center;
 
     display: flex;
@@ -410,6 +413,7 @@ a {
     cursor: pointer;
 
     color: blue;
+    font-weight: 700;
 
     display: flex;
     justify-content: center;
