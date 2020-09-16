@@ -34,16 +34,17 @@ def songs():
     song_reveal_str = settings["song_reveal"]
     song_reveal = dateutil.parser.isoparse(song_reveal_str)
     now = datetime.now(song_reveal.tzinfo)
-    
+
     token = request.args.get('token', '')
     if token == settings['admin_token'] or now >= song_reveal:
         songs = json.load(open('songs.json', 'r'))
         if len(songs) < 100:
             songs += [EMPTY_SONG_INFO] * (100 - len(songs))
-        return render_template('songs.html', css_param=css_param, songs=songs)
-    
+        song_reveal_str = None
     else:
-        return render_template('songs_empty.html', css_param=css_param, song_reveal=song_reveal_str)
+        songs = [ EMPTY_SONG_INFO for _ in range(100) ]
+
+    return render_template('songs.html', css_param=css_param, songs=songs, song_reveal=song_reveal_str)
 
 @app.route('/am')
 def am_list():
