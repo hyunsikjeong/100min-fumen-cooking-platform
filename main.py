@@ -23,7 +23,13 @@ EMPTY_SONG_INFO = {
 @app.route('/')
 def main():
     deadline_str = settings["application_deadline"] 
-    return render_template('main.html', css_param=css_param, deadline=deadline_str)
+    deadline = dateutil.parser.isoparse(deadline_str)
+    now = datetime.now(deadline.tzinfo)
+
+    if now < deadline:
+        return render_template('main.html', css_param=css_param, deadline=deadline_str)
+    else:
+        return render_template('main.html', css_param=css_param, deadline=None)
 
 @app.route('/rule')
 def rule():

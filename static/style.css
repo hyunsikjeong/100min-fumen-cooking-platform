@@ -114,7 +114,7 @@ body {
     cursor: pointer;
     font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
     font-size: 40px;
-    background-color: #fc75fe; /* Green */
+    background-color: #fc75fe;
     border: #8c06a0 solid 7px;
     border-radius: 12px;
     color: white;
@@ -122,6 +122,24 @@ body {
     text-align: center;
     text-decoration: none;
     text-shadow: -2px 0 #8c06a0, 0 2px #8c06a0, 2px 0 #8c06a0, 0 -2px #8c06a0;
+    box-shadow: 0 9px #999;
+    display: inline-block;
+}
+
+.button_disabled {
+    transition-duration: 0.4s;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
+    font-size: 40px;
+    background-color: #757575;
+    border: #333333 solid 7px;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: -2px 0 #757575, 0 2px #757575, 2px 0 #757575, 0 -2px #757575;
     box-shadow: 0 9px #999;
     display: inline-block;
 }
