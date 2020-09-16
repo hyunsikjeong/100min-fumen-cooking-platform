@@ -1,5 +1,6 @@
 from flask import Flask
-from flask import render_template, request, redirect, flash, g
+from flask import render_template, request, redirect, flash, g, send_from_directory
+from werkzeug.utils import secure_filename
 
 from datetime import datetime
 import dateutil.parser
@@ -196,20 +197,21 @@ def am_pm_list():
     random.shuffle(songs)
 
     data = get_db_data()
-    time_dict = dict(map(lambda x: (x[0], x[2]), data))
-    print(time_dict)
+    db_dict = dict(map(lambda x: (x[0], (x[1], x[2])), data))
+    print(db_dict)
     lis = []
     for i in range(len(people)):
         person, song = people[i], songs[i]
         # NOTE: Super inefficient way
-        if person in time_dict:
-            last_time = dateutil.parser.isoparse(time_dict[person]).replace(tzinfo=start.tzinfo)
+        if person in db_dict:
+            filename, timestamp = db_dict[person]
+            last_time = dateutil.parser.isoparse(timestamp).replace(tzinfo=start.tzinfo)
             last_time = str(last_time - start)
             if '.' in last_time:
                 last_time = last_time.split('.')[0]
-            lis.append((person, song, last_time))
+            lis.append((person, song, last_time, filename))
         else:
-            lis.append((person, song, "X"))
+            lis.append((person, song, None, None ))
 
     return render_template('am_pm_list.html',
         css_param=css_param,
@@ -239,3 +241,8 @@ def clear_db():
         return None
     query_db("DELETE FROM timestamps WHERE 1 == 1", commit=True)
     return redirect('/')
+
+@app.route('/upload/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    filename = secure_filename(filename)
+    return send_from_directory(directory=app.config['UPLOAD_FOLDER'], filename=filename)

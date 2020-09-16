@@ -88,11 +88,21 @@
     </div>
     {% endif %}
     <div class="lis">
-        {% for person_name, song_info, last_submission in lis %}
+        {% for person_name, song_info, last_submission, filename in lis %}
             <div class="person_song">
                 <div class="person">
                     <div class="name">{{ person_name }}</div>
-                    <div class="time">Last submission: <br>{{ last_submission }}</div>
+                    {% if last_submission is none %}
+                    <div class="inner">
+                        <div class="time">Not<br>submitted</div>
+                        <div class="dl_hid" onclick="location.href='/hidden';">CANNOT<br>DOWNLOAD</div>
+                    </div>
+                    {% else %}
+                    <div class="inner">
+                        <div class="time">Time:<br>{{ last_submission }}</div>
+                        <div class="dl" onclick="location.href='/upload/{{ filename }}';">DOWNLOAD</div>
+                    </div>
+                    {% endif %}
                 </div><div class="arrow">
                     <div class="line"></div>
                     <div class="point"></div>
