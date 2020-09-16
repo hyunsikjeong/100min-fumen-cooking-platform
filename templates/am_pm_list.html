@@ -1,19 +1,14 @@
 {% extends 'header.html' %}
 
-{% set nav_val = 1 %}
-
 {% block content %}
-    <div class="main-images">
-        <img src="static/title.png">
-        <img src="static/phrase_english.png">
-        <img src="static/phrase_japanese.png">
-        <img src="static/phrase_korean.png">
-        <img src="static/time.png">
-    </div>
-    {% if deadline is not none %}
+    {% if reveal_state <= 1 %}
     <div class="deadline">
         <div class="title">
-            〆切まであと / Deadline ends in / 신청 기한까지
+            {% if reveal_state == 0 %}
+            対象曲の公開まであと / Assigned songs will be revealed in<br>담당곡 공개까지
+            {% else %}
+            〆切まであと / Deadline ends in / 마감 기한까지
+            {% endif %}
         </div>
         <div class="timer">
             <div class="slot">
@@ -33,11 +28,6 @@
                 <div class="time" id="second"></div>
             </div>
         </div>
-    </div>
-    <div class="apply">
-        <a href="https://forms.gle/X9LK1hpxWBWqqUUV7">
-            <button class="button">申し込む / Apply / 신청하기</button>
-        </a>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
@@ -62,14 +52,39 @@
             }, 1000);
         });
     </script>
-    {% else %}
+    {% endif %}
+    {% if reveal_state == 2 %}
     <div class="deadline">
         <div class="title">
-            差し込みは終了しました。<br>Application has been closed.<br>신청이 마감되었습니다.
+            提出は終了しました。<br>Submission has been closed.<br>제출이 마감되었습니다.
         </div>
     </div>
-    <div class="apply">
-        <button class="button_disabled">申し込む / Apply / 신청하기</button>
-    </div>
     {% endif %}
+    <div class="lis">
+        {% for person_name, song_info in lis %}
+            <div class="person_song">
+                <div class="person">
+                    <div class="name">{{ person_name }}</div>
+                    <div class="time">Last submission: <br>X</div>
+                </div><div class="arrow">
+                    <div class="line"></div>
+                    <div class="point"></div>
+                </div><div class="song">
+                    <div class= "img">
+                        <img src="{{ song_info['image'] }}">
+                    </div><div class="data">
+                        <div class="info">
+                            <div class="genre">{{ song_info["genre"] }}</div>
+                            <div class="name">{{ song_info["name"] }}</div>
+                            <div class="artist">By {{ song_info["artist"] }}</div>
+                        </div><div class="etc">
+                            <div>Recommended by<br></div>
+                            <div class="recommender">{{ song_info["recommender"] }}</div>
+                            <a href="{{ song_info['dl'] }}">CLICK TO DOWNLOAD</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
