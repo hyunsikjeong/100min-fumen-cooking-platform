@@ -1,0 +1,9 @@
+{% extends 'header.html' %}
+
+{% block content %}
+    <div>
+        {% for person, token in res %}
+            {{ person }}:{{ token }} <br>
+        {% endfor %}
+    </div>
+{% endblock %}

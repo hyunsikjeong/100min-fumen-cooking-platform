@@ -320,6 +320,32 @@ a {
     border-radius: 5px;
 }
 
+.upload_form {
+    width: 600px;
+    margin: 20px auto;
+
+    padding: 10px;
+
+    background-color: white;
+    border: black solid 1px;
+    border-radius: 5px;
+}
+
+.upload_form .title {
+    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.upload_form .description {
+    padding: 10px;
+}
+
+.upload_form .inner {
+    margin: auto;
+    padding: 20px;
+}
+
 .person_song {
     width: 80%;
     min-width: 600px;

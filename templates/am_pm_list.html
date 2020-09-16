@@ -60,12 +60,38 @@
         </div>
     </div>
     {% endif %}
+    {% if reveal_state == 1 %}
+    <div class="upload_form">
+        <div class="title">提出する / Submit / 제출하기</div>
+        <div class="description">
+            提出の〆切までは再提出できます。<br>
+            You can re-submit before the deadline.<br>
+            제출 마감 전까지는 다시 제출할 수 있습니다.
+        </div>
+        <div class="inner">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form method=post enctype=multipart/form-data>
+                Your token: <input type=text name=token><br>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+            </form>
+        </div>
+    </div>
+    {% endif %}
     <div class="lis">
-        {% for person_name, song_info in lis %}
+        {% for person_name, song_info, last_submission in lis %}
             <div class="person_song">
                 <div class="person">
                     <div class="name">{{ person_name }}</div>
-                    <div class="time">Last submission: <br>X</div>
+                    <div class="time">Last submission: <br>{{ last_submission }}</div>
                 </div><div class="arrow">
                     <div class="line"></div>
                     <div class="point"></div>

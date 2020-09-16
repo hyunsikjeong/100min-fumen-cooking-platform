@@ -3,4 +3,12 @@ __pycache__
 settings.json
 songs.json
 people.json
+database.db
+database.db-journal
 /static/songs
+/upload/*.bms
+/upload/*.bme
+/upload/*.bml
+/upload/*.zip
+/upload/*.rar
+/upload/*.7z
