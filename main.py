@@ -15,7 +15,7 @@ EMPTY_SONG_INFO = {
     "name": "???",
     "genre": "???",
     "artist": "???",
-    "image": "/static/unknown_song.png",
+    "image": "/static/song_not_released.png",
     "recommender": "???",
     "dl": "/hidden"
 }
