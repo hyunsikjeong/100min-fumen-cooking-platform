@@ -353,14 +353,24 @@ a {
 }
 
 .person .name {
-    margin: 25px 0 35px 0;
+    height: 60%;
+    width: 100%;
     font-size: 30px;
     text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .person .time {
-    margin: auto;
+    height: 40%;
+    width: 100%;
     text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .arrow {
