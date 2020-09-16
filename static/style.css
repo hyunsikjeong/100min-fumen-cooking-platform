@@ -21,6 +21,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 
 .navigation .left {
@@ -183,6 +184,122 @@ body {
     margin: 30px;
     padding: auto;
     text-align: center;
+}
+
+.song {
+    width: 60%;
+    min-width: 500px;
+    height: 150px;
+    margin: 30px auto 30px auto;
+    display: flex;
+
+    font-family: 'Patua One', 'Black Han Sans', 'Noto Sans JP', sans-serif;
+}
+
+.song .img {
+    height: 150px;
+    margin: 0;
+    z-index: 1;
+}
+
+.song .img img {
+    height: 148px;
+    width: auto;
+    -webkit-clip-path: polygon(0 0, 0 150px, 150px 150px, 195px 0);
+    clip-path: polygon(0 0, 0 150px, 150px 150px, 195px 0);
+
+    border: black solid 1px;
+    border-radius: 5px;
+}
+
+.song .data {
+    display: flex;
+    margin: 0 0 0 -60px;
+    height: 148px;
+    width: calc(100% - 60px);
+    min-width: 450px;
+    position: relative;
+    background: linear-gradient(
+        0deg,
+        #f8f8f8 0%,
+        #f0f0f0 16%,
+        #ffffff 100%
+    );
+
+    border: black solid 1px;
+    border-radius: 5px;
+}
+
+.song .data .info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.song .data .info .genre {
+    position: absolute;
+    top: 10px;
+    left: 65px;
+
+    font-size: 20px;
+}
+
+.song .data .info .name {
+    position: absolute;
+    left: 45px;
+    top: calc(50% - 32px);
+
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+
+    height: 60px;
+    font-size: 40px;
+}
+
+.song .data .info .artist {
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+
+    font-size: 20px;
+}
+
+
+.song .data .etc {
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    right: 0;
+}
+
+.song .data .etc div {
+    width: 180px;
+    padding: 10px;
+    position: absolute;
+    text-align: right;
+    font-size: 15px;
+    top: 0;
+}
+
+.song .data .etc .recommender {
+    font-size: 20px;
+    top: 25px;
+}
+
+.song .data .etc a {
+    width: 160px;
+    padding: 10px;
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
+
+    color: black;
+    text-decoration: none;
+    text-align: center;
+
+    background-color: white;
+    border-radius: 5px;
 }
 
 .footer {

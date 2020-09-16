@@ -3,7 +3,23 @@
 {% set nav_val = 3 %}
 
 {% block content %}
-    <div>
-        <h1>Songs</h1>
+    <div class="songs">
+        {% for song_info in songs %}
+            <div class="song">
+                <div class= "img">
+                    <img src="{{ song_info['image'] }}">
+                </div><div class="data">
+                    <div class="info">    
+                        <div class="genre">{{ song_info["genre"] }}</div>
+                        <div class="name">{{ song_info["name"] }}</div>
+                        <div class="artist">By {{ song_info["artist"] }}</div>
+                    </div><div class="etc">
+                        <div>Recommended by<br></div>
+                        <div class="recommender">{{ song_info["recommender"] }}</div>
+                        <a href="{{ song_info['dl'] }}">CLICK TO DOWNLOAD</a>
+                    </div>
+                </div> 
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

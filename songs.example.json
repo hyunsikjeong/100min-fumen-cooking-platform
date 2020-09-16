@@ -1,0 +1,10 @@
+[
+    {
+        "name": "GOODBOUNCE",
+        "genre": "GOODDONK",
+        "artist": "EBIMAYO",
+        "image": "/static/songs/goodbounce.jpg",
+        "recommender": "Lapis",
+        "dl": "http://manbow.nothing.sh/event/event.cgi?action=More_def&num=64&event=110"
+    }
+]
