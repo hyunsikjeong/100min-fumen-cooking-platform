@@ -239,6 +239,20 @@ def clear_db():
     token = request.args.get('token', '')
     if token != settings['admin_token']:
         return None
+
+    # If the event is running, disable the feature
+    start = dateutil.parser.isoparse(settings["am_start"])
+    end = dateutil.parser.isoparse(settings["am_end"])
+    now = datetime.now(start.tzinfo)
+    if start <= now < end:
+        return None
+
+    start = dateutil.parser.isoparse(settings["pm_start"])
+    end = dateutil.parser.isoparse(settings["pm_end"])
+    now = datetime.now(start.tzinfo)
+    if start <= now < end:
+        return None
+
     query_db("DELETE FROM timestamps WHERE 1 == 1", commit=True)
     return redirect('/')
 
