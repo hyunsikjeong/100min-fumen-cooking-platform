@@ -167,7 +167,7 @@ def am_pm_list():
             update_db(person, filename)
             flash('Uploaded!')
         else:
-            flash('Wrong extension: only zip, rar, 7z, bms, bme, bml are allowed')
+            flash('Wrong extension: only zip, rar, 7z, bms, bme, bml, pms are allowed')
 
         return redirect(request.url)
 
