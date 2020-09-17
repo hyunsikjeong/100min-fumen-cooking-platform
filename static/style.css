@@ -237,7 +237,7 @@ a {
     margin: 0 0 0 -60px;
     height: 148px;
     width: calc(100% - 60px);
-    min-width: 450px;
+    min-width: 700px;
     position: relative;
     background: linear-gradient(
         0deg,
@@ -252,7 +252,7 @@ a {
 
 .song .data .info {
     position: absolute;
-    width: 100%;
+    width: calc(100% - 200px);
     height: 100%;
 }
 
@@ -266,16 +266,30 @@ a {
 
 .song .data .info .name {
     position: absolute;
-    left: 45px;
+    left: 48px;
     top: calc(50% - 32px);
+    width: calc(100% - 45px);
 
     line-height: 1.5;
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
 
     height: 60px;
     font-size: 40px;
     font-weight: 700;
+}
+
+.song .data .info .small {
+    font-size: 35px;
+}
+
+.song .data .info .smaller {
+    font-size: 30px;
+}
+
+.song .data .info .smallest {
+    font-size: 20px;
+    left: 55px;
 }
 
 .song .data .info .artist {

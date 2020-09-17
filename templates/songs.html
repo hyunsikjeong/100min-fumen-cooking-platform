@@ -33,7 +33,15 @@
                 </div><div class="data">
                     <div class="info">
                         <div class="genre">{{ song_info["genre"] }}</div>
+                        {% if song_info["name_longness"] == 1 %}
+                        <div class="name small">{{ song_info["name"] }}</div>
+                        {% elif song_info["name_longness"] == 2 %}
+                        <div class="name smaller">{{ song_info["name"] }}</div>
+                        {% elif song_info["name_longness"] == 3 %}
+                        <div class="name smallest">{{ song_info["name"]|safe }}</div>
+                        {% else %}
                         <div class="name">{{ song_info["name"] }}</div>
+                        {% endif %}
                         <div class="artist">by {{ song_info["artist"] }}</div>
                     </div><div class="etc">
                         <div>Recommended by<br></div>
