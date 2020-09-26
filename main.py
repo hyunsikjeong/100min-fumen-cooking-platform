@@ -149,6 +149,7 @@ def am_pm_list():
     now = datetime.now(start.tzinfo)
     token = request.args.get('token', '')
     admin_token = settings['admin_token']
+    shuffle_token = settings['shuffle_token']
 
     # Handle uploaded files
     if request.method == 'POST':
@@ -205,7 +206,7 @@ def am_pm_list():
     if len(songs) < total_people:
         songs += songs * ((total_people - 1) // len(songs))
 
-    random.seed(int(sha256(admin_token.encode()).hexdigest(), 16))
+    random.seed(int(sha256(shuffle_token.encode()).hexdigest(), 16))
     random.shuffle(songs)
 
     songs = songs[people_offset:]
