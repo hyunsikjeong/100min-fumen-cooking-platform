@@ -14,7 +14,7 @@ import sqlite3
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './upload'
 app.secret_key = secrets.token_urlsafe(32)
-app.config['MAX_CONTENT_LENGTH'] = 128 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 
 css_param = format(random.getrandbits(64), '016x')
 settings = json.load(open('settings.json', 'r'))
