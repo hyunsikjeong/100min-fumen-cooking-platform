@@ -176,6 +176,7 @@ def am_pm_list():
         if extension:
             idx, person = res
             filename = '{}_{}.{}'.format(idx, person, extension)
+            filename = secure_filename(filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             update_db(person, filename)
