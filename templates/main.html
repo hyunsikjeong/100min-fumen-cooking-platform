@@ -8,68 +8,15 @@
         <img src="static/phrase_english.png">
         <img src="static/phrase_japanese.png">
         <img src="static/phrase_korean.png">
-        <img src="static/time.png">
     </div>
-    {% if deadline is not none %}
-    <div class="deadline">
-        <div class="title">
-            〆切まであと / Deadline ends in / 신청 기한까지
-        </div>
-        <div class="timer">
-            <div class="slot">
-                <div class="name">Day</div>
-                <div class="time" id="day">-</div>
-            </div>
-            <div class="slot">
-                <div class="name">Hour</div>
-                <div class="time" id="hour">-</div>
-            </div>
-            <div class="slot">
-                <div class="name">Minute</div>
-                <div class="time" id="minute">-</div>
-            </div>
-            <div class="slot">
-                <div class="name">Second</div>
-                <div class="time" id="second">-</div>
-            </div>
+    <div class="video-frame">
+        <div>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/wYMES0eMzA0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-    <div class="apply">
-        <a href="https://forms.gle/X9LK1hpxWBWqqUUV7">
-            <button class="button">申し込む / Apply / 신청하기</button>
-        </a>
+    <div class="main-images">
+        <img src="static/thanks_eng.png">
+        <img src="static/thanks_jap.png">
+        <img src="static/thanks_kor.png">
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            var deadline = new Date("{{ deadline }}").getTime();
-            var x = setInterval(function() {
-                var now = new Date().getTime();
-                var t = (deadline > now) ? deadline - now : 0;
-                var day = Math.floor(t / (1000 * 60 * 60 * 24));
-                var hour = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minute = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-                var second = Math.floor((t % (1000 * 60)) / (1000));
-
-                document.getElementById("day").innerHTML = day;
-                document.getElementById("hour").innerHTML = hour;
-                document.getElementById("minute").innerHTML = minute;
-                document.getElementById("second").innerHTML = second;
-
-                if (t === 0) {
-                    clearInterval(x);
-                    location.reload(true);
-                }
-            }, 1000);
-        });
-    </script>
-    {% else %}
-    <div class="deadline">
-        <div class="title">
-            差し込みは終了しました。<br>Application has been closed.<br>신청이 마감되었습니다.
-        </div>
-    </div>
-    <div class="apply">
-        <button class="button_disabled">申し込む / Apply / 신청하기</button>
-    </div>
-    {% endif %}
 {% endblock %}
